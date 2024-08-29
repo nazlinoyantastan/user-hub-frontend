@@ -1,0 +1,11 @@
+
+<div >
+    <h2>User {{ userId }}'s Posts</h2>
+    <ul>
+        <app-post-card 
+        *ngFor="let post of posts" 
+        [post]="post"></app-post-card>
+    </ul>
+  </div>
+  
+  
