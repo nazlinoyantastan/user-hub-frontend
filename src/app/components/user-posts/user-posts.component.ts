@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { PostService } from '../../services/post.service';
-import { Post } from '../../shared/models/post.dto'; 
+import { Post } from '../../shared/models/post.dto';
+import { Router } from '@angular/router';
+import { SearchService } from '../../services/search.service';
 
 
 @Component({
@@ -9,35 +11,60 @@ import { Post } from '../../shared/models/post.dto';
   templateUrl: './user-posts.component.html',
   styleUrls: ['./user-posts.component.scss']
 })
-export class UserPostsComponent implements OnInit{
+export class UserPostsComponent implements OnInit {
 
-  userId! : number;
+  userId!: number;
   posts: Post[] = [];
+  filteredPosts: Post[] = [];
 
   constructor(
-    private route: ActivatedRoute, // URL parametrelerini almak için
-    private postService: PostService // Postları almak için servis
-  ) {}
+    private route: ActivatedRoute,
+    private postService: PostService,
+    private router: Router,
+    private searchService: SearchService
+  ) { }
 
 
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
-      const id = params.get('id'); // URL'deki 'id' parametresini alır
-      if (id !== null) { // Null kontrolü yapılıyor
-        this.userId = +id; // 'id' parametresini sayıya çevirip atıyoruz
-        this.loadPosts(); // Postları yüklemek için fonksiyon çağrılır
+      const id = params.get('id');
+      if (id !== null) {
+        this.userId = +id;
+        this.loadPosts();
       } else {
-        console.error('User ID not found in route parameters'); // Hata durumunda mesaj gösterilir
+        console.error('User ID not found in route parameters');
       }
+    });
+
+    this.searchService.searchTerm$.subscribe((term) => {
+      this.filterPosts(term);
     });
   }
 
   loadPosts(): void {
     this.postService.getPostsByUserId(this.userId).subscribe(posts => {
-      this.posts = posts; // Postları atayın
-      
+      this.posts = posts;
+      this.filteredPosts = posts;
     });
+  }
+
+  filterPosts(searchTerm: string): void {
+
+    if (searchTerm) {
+      this.filteredPosts = this.posts.filter(post =>
+        post.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        post.body.toLowerCase().includes(searchTerm.toLowerCase())
+      );
+    } else {
+      this.filteredPosts = this.posts;
+    }
+  }
+
+  goToPostDetail(postId: number): void {
+
+    this.router.navigate(['/posts', postId
+    ]);
   }
 
 

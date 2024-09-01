@@ -1,0 +1,23 @@
+.footer {
+    background-color: #f8f9fa; /* Açık gri arka plan */
+    padding: 15px 20px;
+    text-align: center;
+    border-top: 1px solid #e7e7e7; /* İnce üst sınır */
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+  }
+  
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+  }
+  
+  .footer-text {
+    color: #555;
+    font-size: 14px;
+    margin: 0;
+  }
+  

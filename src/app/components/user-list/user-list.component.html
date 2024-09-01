@@ -1,11 +1,3 @@
 <div>
-    <app-user-card 
-    *ngFor="let user of users" 
-    [user]="user"
-    (click)="goToUserPosts(user.id)"></app-user-card>
-  </div>
-  <div>
-    {{users.length}}
-  </div>
-
-  
+  <app-user-card *ngFor="let user of filteredUsers" [user]="user" (click)="goToUserPosts(user.id)"></app-user-card>
+</div>
