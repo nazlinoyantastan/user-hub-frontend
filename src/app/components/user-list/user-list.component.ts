@@ -13,7 +13,7 @@ import { SearchService } from '../../services/search.service';
 })
 export class UserListComponent implements OnInit {
   users: User[] = [];
-  filteredUsers: User[] = []; 
+  filteredUsers: User[] = [];
 
   constructor(
     private userService: UserService,
@@ -22,12 +22,10 @@ export class UserListComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.loadUsers(); 
-     this.searchService.searchTerm$.subscribe((term) => {
+    this.loadUsers();
+    this.searchService.searchTerm$.subscribe((term) => {
       this.filterUsers(term);
     });
-
-
   }
 
   loadUsers(): void {

@@ -15,6 +15,7 @@ import { CommentCardComponent } from './shared/components/comment-card/comment-c
 import { HeaderComponent } from './shared/layout/header/header.component';
 import { FooterComponent } from './shared/layout/footer/footer.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { CapitalizeFirstLetterPipe } from './shared/pipes/capitalize-first-letter.pipe';
 
 
 
@@ -28,7 +29,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     PostCardComponent,
     CommentCardComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    CapitalizeFirstLetterPipe
   ],
   imports: [
     BrowserModule,

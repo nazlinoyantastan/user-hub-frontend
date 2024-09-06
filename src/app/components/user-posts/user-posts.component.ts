@@ -4,6 +4,8 @@ import { PostService } from '../../services/post.service';
 import { Post } from '../../shared/models/post.dto';
 import { Router } from '@angular/router';
 import { SearchService } from '../../services/search.service';
+import { UserService } from '../../services/user.service';
+import { User } from '../../shared/models/user.dto';
 
 
 @Component({
@@ -14,6 +16,7 @@ import { SearchService } from '../../services/search.service';
 export class UserPostsComponent implements OnInit {
 
   userId!: number;
+  userName: string = '';
   posts: Post[] = [];
   filteredPosts: Post[] = [];
 
@@ -21,7 +24,8 @@ export class UserPostsComponent implements OnInit {
     private route: ActivatedRoute,
     private postService: PostService,
     private router: Router,
-    private searchService: SearchService
+    private searchService: SearchService,
+    private userService: UserService
   ) { }
 
 
@@ -31,6 +35,7 @@ export class UserPostsComponent implements OnInit {
       const id = params.get('id');
       if (id !== null) {
         this.userId = +id;
+        this.loadUserDetails();
         this.loadPosts();
       } else {
         console.error('User ID not found in route parameters');
@@ -40,6 +45,17 @@ export class UserPostsComponent implements OnInit {
     this.searchService.searchTerm$.subscribe((term) => {
       this.filterPosts(term);
     });
+  }
+
+  loadUserDetails(): void {
+    this.userService.getUserById(this.userId).subscribe(
+      (user: User) => { 
+        this.userName = user.name; 
+      },
+      (error) => {
+        console.error('Error loading user details', error);
+      }
+    );
   }
 
   loadPosts(): void {
@@ -63,8 +79,7 @@ export class UserPostsComponent implements OnInit {
 
   goToPostDetail(postId: number): void {
 
-    this.router.navigate(['/posts', postId
-    ]);
+    this.router.navigate(['/posts', postId]);
   }
 
 

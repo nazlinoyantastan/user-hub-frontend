@@ -1,0 +1,9 @@
+@import "../../shared/styles/shared-card.scss";
+
+.center-content h2 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;  
+    margin-bottom: 15px; 
+    margin-top: 20px;
+}

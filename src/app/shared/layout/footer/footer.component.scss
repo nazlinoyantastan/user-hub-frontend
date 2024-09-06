@@ -3,9 +3,11 @@
     padding: 15px 20px;
     text-align: center;
     border-top: 1px solid #e7e7e7; /* İnce üst sınır */
-    position: fixed;
+    position: relative;
     bottom: 0;
     width: 100%;
+    margin-top: 20px;
+
   }
   
   .container {

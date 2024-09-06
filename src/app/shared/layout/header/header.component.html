@@ -1,18 +1,17 @@
 <header class="header">
-    <nav class="navbar">
-     
-      <div class="menu-icon" (click)="navigateToUsers()">
-        <i class="bi bi-list"></i>
-      </div>
-     
-      <h1 class="navbar-title">User - Hub</h1>
-      
-      <div class="search-icon">
-        <input [(ngModel)]="searchTerm" placeholder="Search..." (input)="onSearch()" /> <!-- input olayını ekledik -->
-        <button (click)="onSearch()">
-          <i class="bi bi-search"></i>
-        </button>
-      </div>
-    </nav>
-  </header>
-  
+  <nav class="navbar">
+
+    <div class="menu-icon" (click)="navigateToUsers()">
+      <i class="bi bi-list"></i>
+    </div>
+
+    <h1 class="navbar-title">User - Hub</h1>
+
+    <div class="search-icon">
+      <input [(ngModel)]="searchTerm" placeholder="Search..." (input)="onSearch()" />
+      <button (click)="onSearch()">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>

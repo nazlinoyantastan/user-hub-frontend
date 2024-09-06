@@ -16,7 +16,7 @@ export class HeaderComponent {
     private searchService: SearchService) { }
 
   onSearch(): void {
-    this.searchService.setSearchTerm(this.searchTerm); // Arama terimini servise gönderir
+    this.searchService.setSearchTerm(this.searchTerm); 
   }
 
   navigateToUsers(): void {

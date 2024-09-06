@@ -11,11 +11,15 @@ export class UserService {
 
   private apiUrl = environment.serverURL;
 
-  constructor(private httpClient: HttpClient) {}
+  constructor(private httpClient: HttpClient) { }
 
-  getUsers(): Observable<User[]>{
+  getUsers(): Observable<User[]> {
     return this.httpClient.get<User[]>(`${this.apiUrl}/users`);
-    
+
   }
+
+  getUserById(id: number): Observable<User> {
+    return this.httpClient.get<User>(`${this.apiUrl}/users/${id}`);
+  } 
 
 }

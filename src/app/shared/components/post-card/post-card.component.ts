@@ -9,5 +9,6 @@ import { Post } from '../../models/post.dto';
 export class PostCardComponent {
 
   @Input() post: Post = new Post ();
+  @Input() index!: number;
 
 }

@@ -5,10 +5,10 @@ import { BehaviorSubject } from 'rxjs';
   providedIn: 'root'
 })
 export class SearchService {
-  private searchTermSubject = new BehaviorSubject<string>(''); // Başlangıçta boş string
-  searchTerm$ = this.searchTermSubject.asObservable(); // Observable olarak dışa aktarım
+  private searchTermSubject = new BehaviorSubject<string>('');
+  searchTerm$ = this.searchTermSubject.asObservable();
 
   setSearchTerm(term: string): void {
-    this.searchTermSubject.next(term); // Yeni arama terimini yayar
+    this.searchTermSubject.next(term);
   }
 }

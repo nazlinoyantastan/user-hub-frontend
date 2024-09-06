@@ -1,6 +1,10 @@
-<div>
-    <h2>User {{ userId }}'s Posts</h2>
+<div class="center-content">
+    <h2>{{ userName }}'s Posts</h2>
 
-    <app-post-card *ngFor="let post of filteredPosts" [post]="post" (click)="goToPostDetail(post.id)"></app-post-card>
+    <app-post-card 
+    *ngFor="let post of filteredPosts; let i = index" 
+    [post]="post" 
+    [index]="i + 1"
+    (click)="goToPostDetail(post.id)"></app-post-card>
 
 </div>
