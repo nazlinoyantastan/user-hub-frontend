@@ -4,6 +4,7 @@ import { Comment } from '../../shared/models/comment.dto';
 import { ActivatedRoute, Router } from '@angular/router';
 import { PostService } from '../../services/post.service';
 import { SearchService } from '../../services/search.service';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-post-detail',
@@ -23,7 +24,8 @@ export class PostDetailComponent implements OnInit {
     private route: ActivatedRoute,
     private postService: PostService,
     private router: Router,
-    private searchService: SearchService
+    private searchService: SearchService,
+    private location: Location
   ) { }
 
 
@@ -70,8 +72,8 @@ export class PostDetailComponent implements OnInit {
   }
 
 
-  goBack(): void {
-    this.router.navigate(['/users', this.post.userId, 'posts']);
+  goBack() {
+    this.location.back();
   }
 
 }

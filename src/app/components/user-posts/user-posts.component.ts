@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { SearchService } from '../../services/search.service';
 import { UserService } from '../../services/user.service';
 import { User } from '../../shared/models/user.dto';
+import { Location } from '@angular/common';
 
 
 @Component({
@@ -25,7 +26,8 @@ export class UserPostsComponent implements OnInit {
     private postService: PostService,
     private router: Router,
     private searchService: SearchService,
-    private userService: UserService
+    private userService: UserService,
+    private location: Location
   ) { }
 
 
@@ -80,6 +82,10 @@ export class UserPostsComponent implements OnInit {
   goToPostDetail(postId: number): void {
 
     this.router.navigate(['/posts', postId]);
+  }
+
+  goBack() {
+    this.location.back();
   }
 
 

@@ -1,7 +1,8 @@
 <div class="card-container">
   <div class="user-card">
-  <div class="avatar"><img src="path/to/image.jpg" alt="User Avatar"  /></div>
- 
+  <div class="avatar">
+    <img [src]="userPhotoUrl" alt="User Avatar"  />
+  </div>
   <div class="user-info">
     <h2 class="user-name">{{ user.name }}</h2> 
     <p class="user-email">{{ user.email }}</p> 
