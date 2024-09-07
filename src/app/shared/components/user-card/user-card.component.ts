@@ -28,7 +28,6 @@ export class UserCardComponent {
       },
       (error) => {
         console.error('Photo not found', error);
-        // Hata durumunda default bir fotoğraf kullanılabilir
         this.userPhotoUrl = 'path/to/default/image.jpg';
       }
     );

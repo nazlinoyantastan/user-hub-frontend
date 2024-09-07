@@ -11,18 +11,15 @@ import { environment } from '../../environments/environment';
 export class PhotoService {
   private apiUrl = environment.serverURL;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
-  // Kullanıcının fotoğrafını getir
+
   getUserPhoto(userId: number): Observable<string> {
-    // İlk olarak kullanıcının albümlerini alıyoruz
+
     return this.http.get<any[]>(`${this.apiUrl}/users/${userId}/albums`).pipe(
-      // İlk albümün id'sini alıyoruz
       map(albums => albums[0]?.id),
-      // Albüm id'sini kullanarak fotoğrafları alıyoruz
       switchMap(albumId => this.http.get<any[]>(`${this.apiUrl}/albums/${albumId}/photos`)),
-      // İlk fotoğrafın URL'sini alıyoruz
-      map(photos => photos[0]?.thumbnailUrl || 'path/to/default/image.jpg') // Hata durumunda default bir resim kullan
+      map(photos => photos[0]?.thumbnailUrl || 'path/to/default/image.jpg')
     );
   }
 }

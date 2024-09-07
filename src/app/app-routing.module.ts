@@ -7,7 +7,7 @@ import { PostDetailComponent } from './components/post-detail/post-detail.compon
 const routes: Routes = [
   { path: 'users', title: 'Users', component: UserListComponent },
   { path: 'users/:id/posts', title: 'Posts', component: UserPostsComponent },
-  { path: 'posts/:postId', title: 'buraya yaz', component: PostDetailComponent },
+  { path: 'posts/:postId', title: 'Details', component: PostDetailComponent },
   { path: '', redirectTo: '/users', pathMatch: 'full' },
   { path: '**', redirectTo: '/users' }
 ];
