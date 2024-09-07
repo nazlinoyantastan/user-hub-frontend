@@ -3,56 +3,56 @@
   padding: 20px 20px;
   border-radius: 8px;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1); 
-}
 
-.navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  position: relative;
-}
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
 
-.menu-icon,
-.search-icon {
-  display: flex;
-  align-items: center;
-  cursor: pointer;
-  font-size: 20px;
-  color: #555; 
-}
-
-.search-icon {
-    margin-right: 20px;
+    .navbar-title {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 18px;
+      font-weight: bold;
+      text-align: center;
+      margin: 0;
+    }
   }
 
-.search-icon input {
-    border: 1px solid #ddd; 
-    padding: 5px 10px;
-    border-radius: 8px; /* Köşeleri daha yuvarlak yapar */
-    outline: none;
-    transition: border-color 0.3s;
-  }
-  
-  .search-icon input:focus {
-    border-color: #aaa; 
-  }
-  
-  .search-icon button {
-    background: none;
-    border: none;
-    outline: none;
-    margin-left: -25px; 
-    padding: 0;
+  .menu-icon,
+  .search-icon {
+    display: flex;
+    align-items: center;
     cursor: pointer;
-    color: #555;
-  }
+    font-size: 20px;
+    color: #555; 
 
-.navbar-title {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  font-size: 18px;
-  font-weight: bold;
-  text-align: center;
-  margin: 0;
+    &.search-icon {
+      margin-right: 20px;
+
+      input {
+        border: 1px solid #ddd; 
+        padding: 5px 10px;
+        border-radius: 8px; 
+        outline: none;
+        transition: border-color 0.3s;
+
+        &:focus {
+          border-color: #aaa; 
+        }
+      }
+
+      button {
+        background: none;
+        border: none;
+        outline: none;
+        margin-left: -25px; 
+        padding: 0;
+        cursor: pointer;
+        color: #555;
+      }
+    }
+  }
 }
