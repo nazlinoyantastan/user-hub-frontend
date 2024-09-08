@@ -13,13 +13,14 @@ export class UserService {
 
   constructor(private httpClient: HttpClient) { }
 
+  //tüm kullanıcıları getirir
   getUsers(): Observable<User[]> {
     return this.httpClient.get<User[]>(`${this.apiUrl}/users`);
-
   }
 
+  // Belirtilen ID'ye sahip kullanıcıyı getirir
   getUserById(id: number): Observable<User> {
     return this.httpClient.get<User>(`${this.apiUrl}/users/${id}`);
-  } 
+  }
 
 }

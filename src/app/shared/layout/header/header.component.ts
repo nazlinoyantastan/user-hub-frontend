@@ -16,7 +16,11 @@ export class HeaderComponent {
     private searchService: SearchService) { }
 
   onSearch(): void {
-    this.searchService.setSearchTerm(this.searchTerm); 
+    this.searchService.setSearchTerm(this.searchTerm);
+  }
+
+  clearSearch(): void {
+    this.searchTerm = ''; 
   }
 
   navigateToUsers(): void {

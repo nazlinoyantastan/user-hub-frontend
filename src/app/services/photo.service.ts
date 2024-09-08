@@ -14,6 +14,7 @@ export class PhotoService {
   constructor(private http: HttpClient) { }
 
 
+  // Belirtilen kullanıcı ID'sine ait fotoğrafı getirir
   getUserPhoto(userId: number): Observable<string> {
 
     return this.http.get<any[]>(`${this.apiUrl}/users/${userId}/albums`).pipe(

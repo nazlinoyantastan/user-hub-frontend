@@ -19,22 +19,27 @@ export class PostService {
     private router: Router
   ) { }
 
+  // Belirtilen kullanıcı ID'sine ait tüm postları getirir
   getPostsByUserId(userId: number): Observable<Post[]> {
     return this.http.get<Post[]>(`${this.apiUrl}/posts?userId=${userId}`);
   }
 
+  // Kullanıcının gönderi sayfasına yönlendirir
   navigateToUserPosts(userId: number): void {
     this.router.navigate(['/users', userId, 'posts']);
   }
 
+  // Belirtilen post ID'sine göre post detayını getirir
   getPostById(postId: number): Observable<Post> {
     return this.http.get<Post>(`${this.apiUrl}/posts/${postId}`);
   }
 
+  // Post detay sayfasına yönlendirir
   navigateToPostDetail(postId: number): void {
     this.router.navigate(['/posts', postId]);
   }
 
+  // Belirtilen post ID'sine ait yorumları getirir
   getCommentsByPostId(postId: number): Observable<Comment[]> {
     return this.http.get<Comment[]>(`${this.apiUrl}/posts/${postId}/comments`);
   }

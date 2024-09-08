@@ -17,6 +17,7 @@ export class UserCardComponent {
 
   constructor(private photoService: PhotoService) {}
 
+  // Bileşen yüklendiğinde kullanıcı fotoğrafını yükler
   ngOnInit(): void {
     this.loadUserPhoto();
   }

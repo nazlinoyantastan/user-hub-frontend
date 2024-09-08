@@ -32,7 +32,7 @@ export class UserPostsComponent implements OnInit {
 
 
 
-  ngOnInit(): void {
+  ngOnInit(): void { //gelen parametre ile kullanıcı bilgilerini ve detaylarını yükler
     this.route.paramMap.subscribe(params => {
       const id = params.get('id');
       if (id !== null) {
@@ -79,12 +79,12 @@ export class UserPostsComponent implements OnInit {
     }
   }
 
-  goToPostDetail(postId: number): void {
+  goToPostDetail(postId: number): void { // seçili postun detay sayfasına yönlendirir
 
     this.router.navigate(['/posts', postId]);
   }
 
-  goBack() {
+  goBack() { // bir önceki sayfaya geri döner
     this.location.back();
   }
 

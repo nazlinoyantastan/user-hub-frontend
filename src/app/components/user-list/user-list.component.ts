@@ -21,7 +21,7 @@ export class UserListComponent implements OnInit {
     private searchService: SearchService
   ) { }
 
-  ngOnInit(): void {
+  ngOnInit(): void { //bileşen açıldığında kullanıcıları yükler ve kullanıcıları filtreler
     this.loadUsers();
     this.searchService.searchTerm$.subscribe((term) => {
       this.filterUsers(term);
@@ -45,7 +45,7 @@ export class UserListComponent implements OnInit {
     }
   }
 
-  goToUserPosts(userId: number): void {
+  goToUserPosts(userId: number): void { //ilgili kullanıcının gönderi sayfasına yönlendirir
     this.router.navigate(['/users', userId, 'posts']);
   }
 

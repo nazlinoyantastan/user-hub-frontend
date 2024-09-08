@@ -29,7 +29,7 @@ export class PostDetailComponent implements OnInit {
   ) { }
 
 
-  ngOnInit(): void {
+  ngOnInit(): void {  //bileşen yüklendiğinde rota parametrelerinden postId alarak ilgili post ve yorumları yükler
 
     this.route.paramMap.subscribe(params => {
       const id = params.get('postId');
@@ -47,20 +47,20 @@ export class PostDetailComponent implements OnInit {
     });
   }
 
-  loadPost(): void {
+  loadPost(): void { //postları yüklüyor
     this.postService.getPostById(this.postId).subscribe(post => {
       this.post = post;
     });
   }
 
-  loadComments(): void {
+  loadComments(): void { //yorumları yüklüyor
     this.postService.getCommentsByPostId(this.postId).subscribe(comments => {
       this.comments = comments;
       this.filteredComments = comments;
     });
   }
 
-  filterComments(searchTerm: string): void {
+  filterComments(searchTerm: string): void {  //arama terimine göre yorumları filtreler
 
     if (searchTerm) {
       this.filteredComments = this.comments.filter(comment =>
@@ -72,7 +72,7 @@ export class PostDetailComponent implements OnInit {
   }
 
 
-  goBack() {
+  goBack() { //bir önceki sayfaya geri döner
     this.location.back();
   }
 
