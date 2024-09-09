@@ -5,7 +5,9 @@
   <h3>{{ post.title | capitalizeFirstLetter }}</h3>
   <p>{{ post.body | capitalizeFirstLetter }}</p>
 </div>
-
+<div class="center-content">
+  <h2>Comments</h2>
+</div>
 
 <div class="comment">
   <app-comment-card *ngFor="let comment of filteredComments" [comment]="comment"></app-comment-card>
