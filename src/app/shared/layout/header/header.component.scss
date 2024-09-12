@@ -3,6 +3,9 @@
   padding: 20px 20px;
   border-radius: 8px;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1); 
+  position: relative;
+  z-index: 100;
+  
 
   .navbar {
     display: flex;
@@ -26,11 +29,15 @@
     display: flex;
     align-items: center;
     cursor: pointer;
-    font-size: 20px;
     color: #555; 
+
+    &.menu-icon {
+      font-size: 22px; /* Menu ikonunu büyütmek için font-size artırıldı */
+    }
 
     &.search-icon {
       margin-right: 20px;
+      font-size: 12px;
 
       input {
         border: 1px solid #ddd; 
@@ -44,6 +51,7 @@
         }
       }
 
+
       button {
         background: none;
         border: none;
@@ -55,6 +63,8 @@
       }
     }
   }
+
+ 
 }
 
 

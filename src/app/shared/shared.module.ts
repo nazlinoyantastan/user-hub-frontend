@@ -4,13 +4,15 @@ import { UserCardComponent } from './components/user-card/user-card.component';
 import { CommentCardComponent } from './components/comment-card/comment-card.component'; 
 import { PostCardComponent } from './components/post-card/post-card.component'; 
 import { CapitalizeFirstLetterPipe } from './pipes/capitalize-first-letter.pipe';
+import { LoadingSpinnerComponent } from './components/loading-spinner/loading-spinner.component';
 
 @NgModule({
   declarations: [
     UserCardComponent,
     CommentCardComponent,
     PostCardComponent,
-    CapitalizeFirstLetterPipe
+    CapitalizeFirstLetterPipe,
+    LoadingSpinnerComponent
   ],
   imports: [
     CommonModule
@@ -19,7 +21,8 @@ import { CapitalizeFirstLetterPipe } from './pipes/capitalize-first-letter.pipe'
     UserCardComponent,
     CommentCardComponent,
     PostCardComponent,
-    CapitalizeFirstLetterPipe 
+    CapitalizeFirstLetterPipe,
+    LoadingSpinnerComponent 
   ]
 })
 export class SharedModule { }

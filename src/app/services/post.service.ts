@@ -3,8 +3,9 @@ import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { environment } from '../../environments/environment';
 import { Post } from '../shared/models/post.dto';
-import { Observable } from 'rxjs';
+import { finalize, Observable } from 'rxjs';
 import { Comment } from '../shared/models/comment.dto';
+import { LoadingService } from './loading.service';
 
 
 @Injectable({
@@ -16,13 +17,18 @@ export class PostService {
 
   constructor(
     private http: HttpClient,
-    private router: Router
+    private router: Router,
+    private loadingService: LoadingService
   ) { }
 
   // Belirtilen kullanıcı ID'sine ait tüm postları getirir
   getPostsByUserId(userId: number): Observable<Post[]> {
-    return this.http.get<Post[]>(`${this.apiUrl}/posts?userId=${userId}`);
+    this.loadingService.show(); // Yüklenme göstergesini başlatır
+    return this.http.get<Post[]>(`${this.apiUrl}/posts?userId=${userId}`).pipe(
+      finalize(() => this.loadingService.hide()) // İstek tamamlandığında yüklenme göstergesini kapatır
+    );
   }
+
 
   // Kullanıcının gönderi sayfasına yönlendirir
   navigateToUserPosts(userId: number): void {
@@ -41,7 +47,10 @@ export class PostService {
 
   // Belirtilen post ID'sine ait yorumları getirir
   getCommentsByPostId(postId: number): Observable<Comment[]> {
-    return this.http.get<Comment[]>(`${this.apiUrl}/posts/${postId}/comments`);
+    this.loadingService.show();
+    return this.http.get<Comment[]>(`${this.apiUrl}/posts/${postId}/comments`).pipe(
+      finalize(() => this.loadingService.hide())
+    );
   }
 
 

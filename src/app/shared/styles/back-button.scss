@@ -4,21 +4,21 @@
     left: 20px;
     width: 50px;
     height: 50px;
-    border: 2px solid rgba(0, 0, 0, 0.181); /* Çerçeve ekledik ve kalınlığı artırdık */
+    border: 2px solid rgba(0, 0, 0, 0.181); 
     border-radius: 50%;
     background-color: #ffffff;
     color: rgb(0, 0, 0);
     display: flex;
     justify-content: center;
     align-items: center;
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Gölgeyi koyulaştırdık ve genişlettik */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); 
     cursor: pointer;
     transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
     z-index: 1000;
   
     &:hover {
       background-color: #f9f9f9d8;
-      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4); /* Hover durumunda gölgeyi daha da belirgin yap */
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4); 
     }
   }
   

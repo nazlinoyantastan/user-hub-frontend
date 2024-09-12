@@ -1,3 +1,6 @@
 <app-header></app-header>
+<div class="overlay-wrapper">
+    <app-loading-spinner *ngIf="isLoading$ | async"></app-loading-spinner>
+  </div>
 <router-outlet />
 <app-footer></app-footer>
