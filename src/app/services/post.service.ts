@@ -1,12 +1,13 @@
+// src/app/services/post.service.ts
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { environment } from '../../environments/environment';
 import { Post } from '../shared/models/post.dto';
-import { finalize, Observable } from 'rxjs';
+import { finalize, Observable, catchError } from 'rxjs';
 import { Comment } from '../shared/models/comment.dto';
 import { LoadingService } from './loading.service';
-
+import { ErrorHandlerService } from './error-handler.service'; 
 
 @Injectable({
   providedIn: 'root'
@@ -18,17 +19,18 @@ export class PostService {
   constructor(
     private http: HttpClient,
     private router: Router,
-    private loadingService: LoadingService
+    private loadingService: LoadingService,
+    private errorHandler: ErrorHandlerService 
   ) { }
 
   // Belirtilen kullanıcı ID'sine ait tüm postları getirir
   getPostsByUserId(userId: number): Observable<Post[]> {
-    this.loadingService.show(); // Yüklenme göstergesini başlatır
+    this.loadingService.show();
     return this.http.get<Post[]>(`${this.apiUrl}/posts?userId=${userId}`).pipe(
-      finalize(() => this.loadingService.hide()) // İstek tamamlandığında yüklenme göstergesini kapatır
+      catchError(this.errorHandler.handleError.bind(this.errorHandler)), // Hata yönetimi eklendi
+      finalize(() => this.loadingService.hide())
     );
   }
-
 
   // Kullanıcının gönderi sayfasına yönlendirir
   navigateToUserPosts(userId: number): void {
@@ -37,7 +39,9 @@ export class PostService {
 
   // Belirtilen post ID'sine göre post detayını getirir
   getPostById(postId: number): Observable<Post> {
-    return this.http.get<Post>(`${this.apiUrl}/posts/${postId}`);
+    return this.http.get<Post>(`${this.apiUrl}/posts/${postId}`).pipe(
+      catchError(this.errorHandler.handleError.bind(this.errorHandler)) // Hata yönetimi eklendi
+    );
   }
 
   // Post detay sayfasına yönlendirir
@@ -49,9 +53,8 @@ export class PostService {
   getCommentsByPostId(postId: number): Observable<Comment[]> {
     this.loadingService.show();
     return this.http.get<Comment[]>(`${this.apiUrl}/posts/${postId}/comments`).pipe(
+      catchError(this.errorHandler.handleError.bind(this.errorHandler)), // Hata yönetimi eklendi
       finalize(() => this.loadingService.hide())
     );
   }
-
-
 }
